@@ -6,22 +6,35 @@ let operation;
 
 
 
-function add(firstNum, secondNum){
+function add(firstNum, secondNum) {
     return firstNum + secondNum
 }
 
-function subtract(firstNum, secondNum){
+function subtract(firstNum, secondNum) {
     return firstNum - secondNum
 }
 
-function multiply(firstNum, secondNum){
+function multiply(firstNum, secondNum) {
     return firstNum * secondNum
 }
-function divide(firstNum, secondNum){
-    return firstNum/secondNum
+function divide(firstNum, secondNum) {
+    return firstNum / secondNum
 }
 
 
-function operate(num1, num2, operator){
-    
+function operate(num1, num2, operator) {
+    let result;
+    if(operator === "+"){
+      result =  add(num1, num2)
+    } else if(operator === "-"){
+        result = subtract(num1, num2)
+    } else if(operator === "*"){
+        result = multiply(num1, num2)
+    }else if (operator === "/"){
+        result =  divide(num1, num2)
+    }
+    return result
 }
+
+
+
