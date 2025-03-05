@@ -3,7 +3,7 @@ let firstUserInput = 0;
 let secondUserInput = 0;
 let indexOfOperator;
 let operation = '';
-
+let result;
 // const answer = document.querySelector(".answer")
 const screen = document.querySelector(".screen");
 
@@ -34,7 +34,7 @@ function operate(num1, num2, operator) {
        
 
     } else {
-        let result;
+        
         if (operator === "+") {
             result = add(num1, num2)
         } else if (operator === "-") {
@@ -52,6 +52,10 @@ function operate(num1, num2, operator) {
 
 function addToScreen(value) {
     // answer.innerHTML = ''
+    if(result){
+        screen.innerHTML = '';
+        result = 0;
+    }
     screen.innerHTML += value
 }
 
