@@ -1,6 +1,7 @@
 
 let firstUserInput = 0;
 let secondUserInput = 0;
+let indexOfOperator;
 let operation = '';
 
 const screen = document.querySelector(".screen");
@@ -26,6 +27,8 @@ function divide(firstNum, secondNum) {
 
 
 function operate(num1, num2, operator) {
+
+
     let result;
     if(operator === "+"){
         result =  add(num1, num2)
@@ -36,7 +39,7 @@ function operate(num1, num2, operator) {
     }else if (operator === "/"){
         result =  divide(num1, num2)
     }
-    return result;
+    screen.innerHTML = result;
 }
 
 function addToScreen(value){
@@ -55,6 +58,7 @@ function addToScreenOperation(value){
     } 
 
     screen.innerHTML += value;
+    indexOfOperator = screen.innerHTML.length -1
 }
 
 function deleteScreen() {
@@ -63,4 +67,10 @@ function deleteScreen() {
 function clearLast(){
     screen.innerHTML = screen.innerHTML.slice(0, -1)
 
+}
+
+function getSecondNumber(){
+    dirtySecondUserInput = screen.innerHTML.slice(indexOfOperator +1, screen.innerHTML.length)
+    secondUserInput = parseInt(dirtySecondUserInput)
+    operate(firstUserInput, secondUserInput, operation)
 }
