@@ -40,3 +40,10 @@ function addToScreen(value){
     screen.innerHTML += value
 }
 
+function deleteScreen() {
+    screen.innerHTML = '';
+}
+function clearLast(){
+    screen.innerHTML = screen.innerHTML.slice(0, -1)
+
+}
