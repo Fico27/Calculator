@@ -4,7 +4,8 @@ let secondUserInput = 0;
 let indexOfOperator;
 let operation = '';
 let result;
-// const answer = document.querySelector(".answer")
+let memory;
+const answer = document.querySelector(".answer")
 const screen = document.querySelector(".screen");
 
 
@@ -29,37 +30,49 @@ function divide(firstNum, secondNum) {
 
 function operate(num1, num2, operator) {
 
-    if (operation === '') {
-        
-       
+    // if (operation === '') {
 
-    } else {
-        
-        if (operator === "+") {
-            result = add(num1, num2)
-        } else if (operator === "-") {
-            result = subtract(num1, num2)
-        } else if (operator === "*") {
-            result = multiply(num1, num2)
-        } else if (operator === "/") {
-            result = divide(num1, num2)
-        }
-        
-        screen.innerHTML = `${result}`
-        operation = ''
+
+
+    // } else {
+
+    if (operator === "+") {
+        result = add(num1, num2)
+    } else if (operator === "-") {
+        result = subtract(num1, num2)
+    } else if (operator === "*") {
+        result = multiply(num1, num2)
+    } else if (operator === "/") {
+        result = divide(num1, num2)
     }
+
+    screen.innerHTML = ''
+    answer.innerHTML = `${result}`
+    memory = result
+    // firstUserInput = result
+
+    // console.log(firstUserInput)
+    // console.log(operation)
+    // console.log(secondUserInput)
+    console.log(result)
+    operation = ''
+    console.log(result)
+    // }
 }
 
 function addToScreen(value) {
-    // answer.innerHTML = ''
-    if(result){
-        screen.innerHTML = '';
+    answer.innerHTML = ''
+    if (result === memory) {
+        // screen.innerHTML = '';
         result = 0;
+    } else {
+        memory = 0;
     }
     screen.innerHTML += value
 }
 
 function addToScreenOperation(value) {
+    answer.innerHTML = ''
     firstUserInput = parseInt(screen.innerHTML)
     operation = value;
 
@@ -72,21 +85,27 @@ function addToScreenOperation(value) {
 
     screen.innerHTML += value;
     indexOfOperator = screen.innerHTML.length - 1
-    
+
 
 }
 
 function deleteScreen() {
     screen.innerHTML = '';
-    // answer.innerHTML = '';
+    answer.innerHTML = '';
+    result = 0;
 }
 function clearLast() {
     screen.innerHTML = screen.innerHTML.slice(0, -1)
-    // answer.innerHTML = '';
+    answer.innerHTML = '';
 }
 
 function getSecondNumber() {
-    dirtySecondUserInput = screen.innerHTML.slice(indexOfOperator + 1, screen.innerHTML.length)
-    secondUserInput = parseInt(dirtySecondUserInput)
-    operate(firstUserInput, secondUserInput, operation)
+
+    if (memory) {
+        firstUserInput = memory
+    } 
+        dirtySecondUserInput = screen.innerHTML.slice(indexOfOperator + 1, screen.innerHTML.length)
+        secondUserInput = parseInt(dirtySecondUserInput)
+        operate(firstUserInput, secondUserInput, operation)
+    
 }
