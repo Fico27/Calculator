@@ -19,6 +19,8 @@ function subtract(firstNum, secondNum) {
 
 function multiply(firstNum, secondNum) {
     return firstNum * secondNum;
+
+
 }
 function divide(firstNum, secondNum) {
     if (secondNum === 0) {
@@ -30,11 +32,8 @@ function divide(firstNum, secondNum) {
 
 function operate(num1, num2, operator) {
 
-    // if (operation === '') {
-
-
-
-    // } else {
+console.log(`${num1} num1`)
+console.log(`${num2} num2`)
 
     if (operator === "+") {
         result = add(num1, num2)
@@ -49,24 +48,18 @@ function operate(num1, num2, operator) {
     screen.innerHTML = ''
     answer.innerHTML = `${result}`
     memory = result
-    // firstUserInput = result
-
-    // console.log(firstUserInput)
-    // console.log(operation)
-    // console.log(secondUserInput)
-    console.log(result)
+    // firstUserInput = `${result}`;
     operation = ''
-    console.log(result)
-    // }
+
 }
 
 function addToScreen(value) {
     answer.innerHTML = ''
     if (result === memory) {
         // screen.innerHTML = '';
-        result = 0;
+        result = ``;
     } else {
-        memory = 0;
+        // memory = ``;
     }
     screen.innerHTML += value
 }
@@ -93,6 +86,7 @@ function deleteScreen() {
     screen.innerHTML = '';
     answer.innerHTML = '';
     result = 0;
+    memory = 0;
 }
 function clearLast() {
     screen.innerHTML = screen.innerHTML.slice(0, -1)
@@ -101,11 +95,20 @@ function clearLast() {
 
 function getSecondNumber() {
 
+    
     if (memory) {
         firstUserInput = memory
+        result = 0;
     } 
         dirtySecondUserInput = screen.innerHTML.slice(indexOfOperator + 1, screen.innerHTML.length)
         secondUserInput = parseInt(dirtySecondUserInput)
+
+            console.log(`${firstUserInput} First user input`)
+            console.log(`${secondUserInput} Second user input`)
         operate(firstUserInput, secondUserInput, operation)
+
     
 }
+
+
+// Left off checking what values are on first user input and second user input. After subracting it shows the correct second user input. What leads to NaN result??
